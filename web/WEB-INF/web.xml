@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <servlet>
+    <servlet-name>RegistServlet</servlet-name>
+    <servlet-class>com.book1.web.RegistServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RegistServlet</servlet-name>
+        <url-pattern>/registServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.book1.web.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+    <servlet-name>Query</servlet-name>
+    <servlet-class>com.book1.web.Query</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Query</servlet-name>
+        <url-pattern>/query</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>com.book1.web.UploadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UploadServlet</servlet-name>
+        <url-pattern>/uploadServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DownloadServlet</servlet-name>
+        <servlet-class>com.book1.web.DownloadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DownloadServlet</servlet-name>
+        <url-pattern>/downloadServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.book1.web.UserServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/userServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>BookServlet</servlet-name>
+        <servlet-class>com.book1.web.BookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BookServlet</servlet-name>
+        <url-pattern>/bookServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ClientBookServlet</servlet-name>
+        <servlet-class>com.book1.web.ClientBookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClientBookServlet</servlet-name>
+        <url-pattern>/client/clientBookServlet</url-pattern>
+    </servlet-mapping>
+
+<!--验证码-->
+    <servlet>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>KaptchaServlet</servlet-name>
+        <url-pattern>/Kaptcha</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.book1.web.CartServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cartServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>com.book1.web.OrderServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/orderServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <!--配置Filter路径-->
+    <filter>
+        <filter-name>ManagerFilter</filter-name>
+        <filter-class>com.book1.filter.ManagerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ManagerFilter</filter-name>
+        <!--拦截路径而不是目标资源，第二个也得拦截，因为浏览器界面直接输入不拦截的话会访问-->
+        <url-pattern>/book_manager.jsp</url-pattern>
+        <url-pattern>/bookServlet</url-pattern>
+    </filter-mapping>
+<!--配置Filter路径-->
+    <filter>
+        <filter-name>TransactionFilter</filter-name>
+        <filter-class>com.book1.filter.TransactionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TransactionFilter</filter-name>
+        <!--拦截路径而不是目标资源，第二个也得拦截，因为浏览器界面直接输入不拦截的话会访问-->
+        <!--包含当前工程的所有请求加入事务管理-->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--如果500错误代码，则跳回指定页面-->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/error500.jsp</location>
+    </error-page>
+
+
+<!--如果404错误代码，则跳回指定页面-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/error404.jsp</location>
+    </error-page>
+
+
+
+    <!--管理员权限-->
+
+    <filter>
+        <filter-name>ManagerClientFilter</filter-name>
+        <filter-class>com.book1.filter.ManagerClientFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ManagerClientFilter</filter-name>
+        <!--拦截路径而不是目标资源，第二个也得拦截，因为浏览器界面直接输入不拦截的话会访问-->
+        <!--包含当前工程的所有请求加入事务管理-->
+        <url-pattern>/manager.jsp</url-pattern>
+    </filter-mapping>
+
+
+</web-app>

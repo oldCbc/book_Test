@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="filters-helpers_2.13-2.8.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/filters-helpers_2.13-2.8.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
